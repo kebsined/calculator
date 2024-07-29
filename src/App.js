@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styles from './App.module.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [input, setInput] = useState('');
+
+	const NUMS = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
+
+	return (
+		<div className={styles.container}>
+			<label htmlFor='calc' className={styles.calculatorLabel}>
+				ЧТО НУЖНО ПОСЧИТАТЬ?
+			</label>
+			<input type='text' id='calc' className={styles.calculatorInput} />
+
+			<div className={styles.calculator}>
+				{NUMS.map((num, index) => (
+					<button
+						className={styles.numberButton}
+						key={num}
+						onClick={() => setInput(input => input + NUMS[index])}
+					>
+						{num}
+					</button>
+				))}
+			</div>
+		</div>
+	);
+};
 
 export default App;
