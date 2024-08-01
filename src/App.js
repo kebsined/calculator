@@ -39,17 +39,14 @@ const App = () => {
 						key={value}
 						className={`${value === '0' && styles.zero} ${
 							value !== '0' && styles.btn
-						} ${value === '=' && styles.operation} ${
-							value === '-' && styles.operation
-						} ${value === '+' && styles.operation} ${
+						} ${(value === '=' || value === '-' || value === '+') && styles.operation} ${
 							value === 'C' && styles.clear
 						}`}
 						onClick={() =>
 							`${value === '=' && calculate()} ${
-								value === '-' && handleClick(value)
-							} ${value === '+' && handleClick(value)} ${
-								value === 'C' && clear()
-							} ${Number(value) <= 9 && handleClick(value)}`
+								(value === '-' || value === '+' || Number(value) <= 9) &&
+								handleClick(value)
+							} ${value === 'C' && clear()} `
 						}
 					>
 						{value}
