@@ -1,48 +1,40 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 
+const NUMS = ['C', '+', '-', '7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '='];
+
 const App = () => {
 	const [input, setInput] = useState('');
+	const [colorOfResult, setColorOfResult] = useState('#fff');
 
-	const NUMS = [
-		'C',
-		'+',
-		'-',
-		'7',
-		'8',
-		'9',
-		'4',
-		'5',
-		'6',
-		'1',
-		'2',
-		'3',
-		'0',
-		'=',
-	];
-
-	const handleClick = value => {
-		setInput(input => input + value);
+	const handleClick = (value) => {
+		setColorOfResult('#fff');
+		return setInput((input) => input + value);
 	};
 
 	const calculate = () => {
-		setInput(eval(input));
+		setColorOfResult('#dd8d14');
+		// eslint-disable-next-line no-eval
+		return setInput(eval(input));
 	};
 
 	const clear = () => {
-		setInput('');
+		setColorOfResult('#fff');
+		return setInput('');
 	};
 
 	return (
 		<div className={styles.container}>
 			<input
-				type='text'
-				id='calc'
-				className={styles.calculatorInput}
 				value={input}
+				type="text"
+				id="calc"
+				className={`${styles.calculatorInput}`}
+				style={{ color: colorOfResult }}
+				readOnly
 			/>
 			<div className={styles.calculator}>
-				{NUMS.map(value => (
+				{NUMS.map((value) => (
 					<button
 						key={value}
 						className={`${value === '0' && styles.zero} ${

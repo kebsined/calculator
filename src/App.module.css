@@ -2,19 +2,34 @@
 	box-sizing: border-box;
 }
 
+html {
+	background: #820000cb;
+}
+
 .container {
 	position: relative;
 	margin: 100px auto;
 	width: 280px;
-	height: 520px;
+	height: 580px;
 	text-align: center;
 	border: none;
 	border-radius: 15px;
-	background-color: black;
+	background-color: rgb(0, 0, 0);
+	box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.8);
+	animation: 6s show ease;
+}
+
+@keyframes show {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .calculator {
-	margin-top: 20px;
+	/* margin-top: 50px; */
 	display: grid;
 	grid-template-columns: repeat(3, 4rem);
 	grid-template-rows: repeat(4, 4rem);
@@ -82,13 +97,9 @@ button:active {
 	height: 5rem;
 	display: inline-block;
 	border: none;
-	background-color: black;
-	color: #fff;
+	background-color: rgb(0, 0, 0);
 	font-size: 60px;
+	font-weight: 100;
 	line-height: 20;
-	margin-top: 10px;
-}
-
-.calculated {
-	color: #f0b864;
+	margin-top: 100px;
 }
